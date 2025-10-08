@@ -100,7 +100,7 @@ echo "CONFIG_AN8855_GSW=y" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986
 echo "# CONFIG_NET_DSA_AN8855 is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986/config-5.4
 echo "# CONFIG_NET_DSA_TAG_AIROHA is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986/config-5.4
 
-sed -i "s/mtkhnat-\$(CONFIG_NET_DSA_MT7530)\t\t+= hnat_stag\.o/ifeq (\$(CONFIG_NET_DSA_AN8855), y)\nmtkhnat-y\t\t+= hnat_stag\.o\nelse\nmtkhnat-\$(CONFIG_NET_DSA_MT7530)\t\t+= hnat_stag\.o\nendif/" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/drivers/net/ethernet/mediatek/mtk_hnat/Makefile
+sed -i "s/mtkhnat-\$\(CONFIG_NET_DSA_MT7530\)\t\t\+= hnat_stag\.o/ifeq \(\$\(CONFIG_NET_DSA_AN8855\), y\)\nmtkhnat-y\t\t\+= hnat_stag\.o\nelse\nmtkhnat-\$\(CONFIG_NET_DSA_MT7530\)\t\t\+= hnat_stag\.o\nendif/" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/drivers/net/ethernet/mediatek/mtk_hnat/Makefile
 
 # modify mt7981.mk
 AWK_BLOCK=$(cat << 'AWK_EOF'
@@ -129,7 +129,7 @@ define Device/xiaomi_mi-router-ax3000t-an8855
   IMAGE_SIZE := 114688k
   KERNEL_IN_UBI := 1
   IMAGES += factory.bin
-  IMAGE/factory.bin := append-ubi | check-size \$\$\$\$$(IMAGE_SIZE)
+  IMAGE/factory.bin := append-ubi | check-size $$$$(IMAGE_SIZE)
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
 endef
 TARGET_DEVICES += xiaomi_mi-router-ax3000t-an8855
@@ -143,8 +143,8 @@ gawk -i inplace -v insert_text="$AWK_BLOCK" '
   }
 ' $GITHUB_WORKSPACE/wrt/target/linux/mediatek/image/mt7981.mk
 
-sed -i "s/xiaomi,mi-router-wr30u\*\)/xiaomi,mi-router-ax3000t|\\\n\t\txiaomi,mi-router-ax3000t-stock|\\\n\t\txiaomi,mi-router-wr30u\*\)/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
+sed -i "s/xiaomi,mi-router-ax3000t\*\|/xiaomi,mi-router-ax3000t\|\\\n\t\txiaomi,mi-router-ax3000t-stock\|\\\n\t\txiaomi,mi-router-wr30u\*\)/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
 
-sed -i "s/\*360,t7\*\)/xiaomi,mi-router-ax3000t-an8855|\\\n\t\txiaomi,mi-router-ax3000t-an8855-stock)\n\t\t\tucidef_set_interfaces_lan_wan \"eth0.1\" \"eth0.2\"\n\t\t\tucidef_add_switch \"switch0\" \\\n\t\t\t\t\"1:lan\" \"2:lan\" \"3:lan\" \"0:wan\" \"5t@eth0\"\n\t\t\t;;\n\t\t\*360,t7\*\)/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
-sed -i "s/xiaomi,mi-router-ax3000t-stock|\\/xiaomi,mi-router-ax3000t-stock|\\\n\t\txiaomi,mi-router-ax3000t-an8855-stock|\\/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
-sed -i "s/xiaomi,mi-router-ax3000t|\\/xiaomi,mi-router-ax3000t|\\\n\t\txiaomi,mi-router-ax3000t-an8855|\\/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
+sed -i "s/\*360,t7\*\)/xiaomi,mi-router-ax3000t-an8855\|\\\n\t\txiaomi,mi-router-ax3000t-an8855-stock\)\n\t\t\tucidef_set_interfaces_lan_wan \"eth0.1\" \"eth0.2\"\n\t\t\tucidef_add_switch \"switch0\" \\\n\t\t\t\t\"1:lan\" \"2:lan\" \"3:lan\" \"0:wan\" \"5t@eth0\"\n\t\t\t;;\n\t\t\*360,t7\*\)/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
+sed -i "s/xiaomi,mi-router-ax3000t-stock\|\\/xiaomi,mi-router-ax3000t-stock\|\\\n\t\txiaomi,mi-router-ax3000t-an8855-stock\|\\/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
+sed -i "s/xiaomi,mi-router-ax3000t\|\\/xiaomi,mi-router-ax3000t\|\\\n\t\txiaomi,mi-router-ax3000t-an8855\|\\/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
