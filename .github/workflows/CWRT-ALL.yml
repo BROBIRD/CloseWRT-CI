@@ -20,7 +20,7 @@ on:
         type: boolean
 
 env:
-  GITHUB_TOKEN: ${{secrets.AUTH_TOKEN}}
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
 #CI权限
 permissions: write-all
@@ -33,7 +33,7 @@ jobs:
       - name: Delete old Releases and Workflows
         uses: ophub/delete-releases-workflows@main
         with:
-          gh_token: ${{secrets.AUTH_TOKEN}}
+          gh_token: ${{secrets.GITHUB_TOKEN}}
           delete_releases: true
           releases_keep_latest: 0
           delete_tags: true
@@ -47,7 +47,8 @@ jobs:
       fail-fast: false
       #max-parallel: 4
       matrix:
-        CONFIG: [MT7981, MT7986]
+        # CONFIG: [MT7981, MT7986]
+        CONFIG: [MT7981]
         REPO_INFO:
           #- {SOURCE: "padavanonly/immortalwrt-mt798x-24.10", BRANCH: "openwrt-24.10-6.6"}
           - {SOURCE: "padavanonly/immortalwrt-mt798x-24.10", BRANCH: "2410"}          
@@ -66,7 +67,7 @@ jobs:
       #默认WIFI名称
       WRT_SSID: ImmortalWrt
       #默认WIFI密码
-      WRT_WORD: 
+      WRT_WORD: 12345678
       #默认地址
       WRT_IP: 10.0.2.1
       #默认密码，仅作提示，修改无用
