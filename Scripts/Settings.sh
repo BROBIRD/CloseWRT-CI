@@ -1,5 +1,23 @@
 #!/bin/bash
 
+#修改系统
+# mkdir -p files/etc/config
+# wget -qO- https://raw.githubusercontent.com/sos801107/TL-XDR608X/refs/heads/main/etc/openclash > files/etc/config/openclash
+# wget -qO- https://raw.githubusercontent.com/sos801107/TL-XDR608X/refs/heads/main/etc/mosdns > files/etc/config/mosdns
+# wget -qO- https://raw.githubusercontent.com/sos801107/TL-XDR608X/refs/heads/main/etc/smartdns > files/etc/config/smartdns
+
+# mkdir -p files/etc
+# wget -qO- https://raw.githubusercontent.com/sos801107/TL-XDR608X/refs/heads/main/etc/opkg.conf > files/etc/opkg.conf
+# mkdir -p files/etc/opkg
+# wget -qO- https://raw.githubusercontent.com/sos801107/TL-XDR608X/refs/heads/main/etc/distfeeds.conf > files/etc/opkg/distfeeds.conf
+# mkdir -p files/root
+# wget -qO- https://raw.githubusercontent.com/sos801107/TL-XDR608X/refs/heads/main/etc/.profile > files/root/.profile
+
+#修改WIFI
+#mkdir -p files/lib/modules/5.4.284
+#wget -qO- https://raw.githubusercontent.com/sos801107/CloseWRT-CI/refs/heads/main/Config/mt_wifi_2.ko > files/lib/modules/5.4.284/mt_wifi.ko
+#wget -qO- https://raw.githubusercontent.com/sos801107/CloseWRT-CI/refs/heads/main/Config/mtkhnat.ko > files/lib/modules/5.4.284/mtkhnat.ko
+
 #修改默认主题
 sed -i "s/luci-theme-bootstrap/luci-theme-$WRT_THEME/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 #修改immortalwrt.lan关联IP
@@ -31,3 +49,13 @@ echo "CONFIG_PACKAGE_luci-app-$WRT_THEME-config=y" >> ./.config
 if [ -n "$WRT_PACKAGE" ]; then
 	echo -e "$WRT_PACKAGE" >> ./.config
 fi
+
+#调整mtk系列配置
+sed -i '/TARGET.*mediatek/d' ./.config
+sed -i '/TARGET_MULTI_PROFILE/d' ./.config
+sed -i '/TARGET_PER_DEVICE_ROOTFS/d' ./.config
+sed -i '/luci-app-eqos/d' ./.config
+sed -i '/luci-app-mtk/d' ./.config
+sed -i '/luci-app-upnp/d' ./.config
+sed -i '/luci-app-wol/d' ./.config
+sed -i '/wifi-profile/d' ./.config
