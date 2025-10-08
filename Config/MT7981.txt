@@ -2,4 +2,5 @@ CONFIG_TARGET_mediatek=y
 CONFIG_TARGET_mediatek_mt7981=y
 
 CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE_cmcc_a10=y
+CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE_xiaomi_mi-router-ax3000t=y
 CONFIG_MTK_MT7981_NEW_FW=y
