@@ -76,4 +76,4 @@ if [ -f "$RUST_FILE" ]; then
 	cd $PKG_PATH && echo "rust has been fixed!"
 fi
 
-sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' $PKG_PATH/emortal/default-settings && echo "default mirror switched!"
+sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' $PKG_PATH/emortal/default-settings/files/99-default-settings-chinese && echo "default mirror switched!"
