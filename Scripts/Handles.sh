@@ -90,7 +90,7 @@ $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/hanwckf/immortalwrt-mt79
 $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/hanwckf/immortalwrt-mt798x/tree/openwrt-21.02/target/linux/mediatek/files-5.4/net/dsa $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/net/dsa
 
 curl https://github.com/hanwckf/immortalwrt-mt798x/raw/refs/heads/openwrt-21.02/target/linux/mediatek/patches-5.4/999-2739-drivers_net_dsa_add_an8855.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-drivers_net_dsa_add_an8855.patch
-curl https://github.com/hanwckf/immortalwrt-mt798x/raw/refs/heads/openwrt-21.02/target/linux/mediatek/999-2739-drivers_net_phy_add_an8855_gsw.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-drivers_net_phy_add_an8855_gsw.patch
+curl https://github.com/hanwckf/immortalwrt-mt798x/raw/refs/heads/openwrt-21.02/target/linux/mediatek/patches-5.4/999-2739-drivers_net_phy_add_an8855_gsw.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-drivers_net_phy_add_an8855_gsw.patch
 curl https://github.com/hanwckf/immortalwrt-mt798x/raw/refs/heads/openwrt-21.02/target/linux/mediatek/patches-5.4/999-2739-net_dsa_add_tag_arht.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-net_dsa_add_tag_arht.patch
 
 echo "CONFIG_AN8855_GSW=y" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
