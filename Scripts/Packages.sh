@@ -55,11 +55,11 @@ UPDATE_PACKAGE "argon" "jerrykuku/luci-theme-argon" "master"
 # UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
 # UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
 UPDATE_PACKAGE "passwall" "xiaorouji/openwrt-passwall" "main" "pkg"
-UPDATE_PACKAGE "passwall-packages" "xiaorouji/openwrt-passwall-packages" "main" "" "xray-core v2ray-geodata sing-box chinadns-ng dns2socks hysteria ipt2socks microsocks naiveproxy shadowsocks-libev shadowsocks-rust shadowsocksr-libev simple-obfs tcping trojan-plus tuic-client v2ray-plugin xray-plugin geoview shadow-tls"
+# UPDATE_PACKAGE "passwall-packages" "xiaorouji/openwrt-passwall-packages" "main" "" "xray-core v2ray-geodata sing-box chinadns-ng dns2socks hysteria ipt2socks microsocks naiveproxy shadowsocks-libev shadowsocks-rust shadowsocksr-libev simple-obfs tcping trojan-plus tuic-client v2ray-plugin xray-plugin geoview shadow-tls"
 
 # UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
-UPDATE_PACKAGE "ddns-go" "sirpdboy/luci-app-ddns-go" "main"
-UPDATE_PACKAGE "easytier" "EasyTier/luci-app-easytier" "main"
+# UPDATE_PACKAGE "ddns-go" "sirpdboy/luci-app-ddns-go" "main"
+# UPDATE_PACKAGE "easytier" "EasyTier/luci-app-easytier" "main"
 # UPDATE_PACKAGE "gecoosac" "lwb1978/openwrt-gecoosac" "main"
 # UPDATE_PACKAGE "mosdns" "sbwml/luci-app-mosdns" "v5" "" "v2dat"
 # UPDATE_PACKAGE "netspeedtest" "sirpdboy/luci-app-netspeedtest" "js" "" "homebox speedtest"
@@ -76,8 +76,13 @@ UPDATE_PACKAGE "easytier" "EasyTier/luci-app-easytier" "main"
 
 #cp -r mysing-box/sing-box feeds/packages/net
 
-# rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
-# git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall-packages package/passwall-packages
+rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
+git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall-packages package/passwall-packages
+
+
+# 更新 golang 1.25 版本
+rm -rf feeds/packages/lang/golang
+$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/packages/tree/master/lang/golang $GITHUB_WORKSPACE/wrt/feeds/packages/lang/golang
 
 #更新软件包版本
 UPDATE_VERSION() {

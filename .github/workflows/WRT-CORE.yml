@@ -160,7 +160,7 @@ jobs:
       - name: Custom Packages
         run: |
           cd ./wrt/package/
-
+          chmod +x $GITHUB_WORKSPACE/Scripts/gh-down.sh
           $GITHUB_WORKSPACE/Scripts/Packages.sh
           $GITHUB_WORKSPACE/Scripts/Handles.sh
 
@@ -186,11 +186,13 @@ jobs:
           make download -j$(nproc)
 
       - name: Compile Firmware
+        env:
+          DEBIAN_FRONTEND: noninteractive
         if: env.WRT_TEST != 'true'
         run: |
           cd ./wrt/
 
-          make -j$(nproc) || make -j$(nproc) V=s
+          make -j$(nproc) || make -j1 V=s
 
       - name: Machine Information
         run: |
