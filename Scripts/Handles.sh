@@ -142,11 +142,12 @@ gawk -i inplace -v insert_text="$AWK_BLOCK" '
     print insert_text; # 匹配到目标行后，立即插入文本块
   }
 ' $GITHUB_WORKSPACE/wrt/target/linux/mediatek/image/mt7981.mk
+
 echo "1111111111"
-sed -i "s/xiaomi,mi-router-ax3000t\*\|/xiaomi,mi-router-ax3000t\|\\\n\t\txiaomi,mi-router-ax3000t-stock\|\\\n\t\txiaomi,mi-router-wr30u\*\)/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
+sed -i 's/^\s*xiaomi,mi-router-ax3000t\*\s*|\\$/\txiaomi,mi-router-ax3000t|\\\n\txiaomi,mi-router-ax3000t-stock|\\/' $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
 echo "2222222222"
-sed -i "s/\*360,t7\*\)/xiaomi,mi-router-ax3000t-an8855\|\\\n\t\txiaomi,mi-router-ax3000t-an8855-stock\)\n\t\t\tucidef_set_interfaces_lan_wan \"eth0\.1\" \"eth0\.2\"\n\t\t\tucidef_add_switch \"switch0\" \\\n\t\t\t\t\"1:lan\" \"2:lan\" \"3:lan\" \"0:wan\" \"5t@eth0\"\n\t\t\t;;\n\t\t\*360,t7\*\)/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
+sed -i 's/^[[:space:]]*\*360,t7\*)/\txiaomi,mi-router-ax3000t-an8855|\\\n\txiaomi,mi-router-ax3000t-an8855-stock)\n\t\tucidef_set_interfaces_lan_wan "eth0.1" "eth0.2"\n\t\tucidef_add_switch "switch0" \\\n\t\t\t"1:lan" "2:lan" "3:lan" "0:wan" "5t@eth0"\n\t\t;;\n\t*360,t7*)/'  $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
 echo "3333333333"
-sed -i "s/xiaomi,mi-router-ax3000t-stock\|\\/xiaomi,mi-router-ax3000t-stock\|\\\n\t\txiaomi,mi-router-ax3000t-an8855-stock\|\\/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
+sed -i '/^[[:space:]]*xiaomi,mi-router-ax3000t-stock|\\$/a\\txiaomi,mi-router-ax3000t-an8855-stock|\\' $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
 echo "4444444444"
-sed -i "s/xiaomi,mi-router-ax3000t\|\\/xiaomi,mi-router-ax3000t\|\\\n\t\txiaomi,mi-router-ax3000t-an8855\|\\/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
+sed -i '/^[[:space:]]*xiaomi,mi-router-ax3000t|\\$/a\\txiaomi,mi-router-ax3000t-an8855|\\' $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
