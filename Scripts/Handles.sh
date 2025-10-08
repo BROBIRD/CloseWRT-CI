@@ -146,5 +146,5 @@ gawk -i inplace -v insert_text="$AWK_BLOCK" '
 sed -i "s/xiaomi,mi-router-wr30u\*\)/xiaomi,mi-router-ax3000t|\\\n\t\txiaomi,mi-router-ax3000t-stock|\\\n\t\txiaomi,mi-router-wr30u\*\)/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
 
 sed -i "s/\*360,t7\*\)/xiaomi,mi-router-ax3000t-an8855|\\\n\t\txiaomi,mi-router-ax3000t-an8855-stock)\n\t\t\tucidef_set_interfaces_lan_wan \"eth0.1\" \"eth0.2\"\n\t\t\tucidef_add_switch \"switch0\" \\\n\t\t\t\t\"1:lan\" \"2:lan\" \"3:lan\" \"0:wan\" \"5t@eth0\"\n\t\t\t;;\n\t\t\*360,t7\*\)/" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
-sed -i "s/xiaomi,mi-router-ax3000t-stock|\\/xiaomi,mi-router-ax3000t-stock|\\\n\t\txiaomi,mi-router-ax3000t-an8855-stock|\\/" $GITHUB_WORKSPACE/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
-sed -i "s/xiaomi,mi-router-ax3000t|\\/xiaomi,mi-router-ax3000t|\\\n\t\txiaomi,mi-router-ax3000t-an8855|\\/" $GITHUB_WORKSPACE/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
+sed -i "s/xiaomi,mi-router-ax3000t-stock|\\/xiaomi,mi-router-ax3000t-stock|\\\n\t\txiaomi,mi-router-ax3000t-an8855-stock|\\/" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
+sed -i "s/xiaomi,mi-router-ax3000t|\\/xiaomi,mi-router-ax3000t|\\\n\t\txiaomi,mi-router-ax3000t-an8855|\\/" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
