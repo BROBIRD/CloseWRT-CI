@@ -5,7 +5,7 @@ name: CWRT-ALL
 on:
   #自动编译：早上1点
   schedule:
-    - cron: 0 17 * * *
+    - cron: 0 17 */6 * *
   #手动编译
   workflow_dispatch:
     inputs:
@@ -35,10 +35,10 @@ jobs:
         with:
           gh_token: ${{secrets.GITHUB_TOKEN}}
           delete_releases: true
-          releases_keep_latest: 0
+          releases_keep_latest: 5
           delete_tags: true
           delete_workflows: true
-          workflows_keep_day: 0
+          workflows_keep_day: 14
 
   config:
     needs: cleanup

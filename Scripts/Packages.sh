@@ -39,7 +39,7 @@ UPDATE_PACKAGE() {
 		mv -f $REPO_NAME $PKG_NAME
 	fi
 }
-# rm -rf feeds/packages/net/sing-box
+# rm -rf feeds/packages/net/tcping
 
 # 调用示例
 # UPDATE_PACKAGE "OpenAppFilter" "destan19/OpenAppFilter" "master" "" "custom_name1 custom_name2"
@@ -55,7 +55,7 @@ UPDATE_PACKAGE "argon" "sbwml/luci-theme-argon" "openwrt-24.10"
 # UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
 # UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
 UPDATE_PACKAGE "passwall" "xiaorouji/openwrt-passwall" "main" "pkg"
-UPDATE_PACKAGE "openwrt-passwall-packages" "xiaorouji/openwrt-passwall-packages" "main" "" "sing-box"
+UPDATE_PACKAGE "passwall-packages" "xiaorouji/openwrt-passwall-packages" "main" "" "xray-core v2ray-geodata sing-box chinadns-ng dns2socks hysteria ipt2socks microsocks naiveproxy shadowsocks-libev shadowsocks-rust shadowsocksr-libev simple-obfs tcping trojan-plus tuic-client v2ray-plugin xray-plugin geoview shadow-tls"
 
 # UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
 UPDATE_PACKAGE "ddns-go" "sirpdboy/luci-app-ddns-go" "main"
@@ -75,6 +75,9 @@ UPDATE_PACKAGE "easytier" "EasyTier/luci-app-easytier" "main"
 
 
 #cp -r mysing-box/sing-box feeds/packages/net
+
+# rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
+# git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall-packages package/passwall-packages
 
 #更新软件包版本
 UPDATE_VERSION() {
