@@ -80,18 +80,18 @@ sed -i 's,mirrors.vsean.net/openwrt,mirror.nju.edu.cn/immortalwrt,g' $PKG_PATH/e
 
 # add an8855 support
 
-curl https://github.com/hanwckf/immortalwrt-mt798x/raw/refs/heads/openwrt-21.02/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855-stock.dts -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855-stock.dts
-curl https://github.com/hanwckf/immortalwrt-mt798x/raw/refs/heads/openwrt-21.02/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855.dts -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855.dts
-curl https://github.com/hanwckf/immortalwrt-mt798x/raw/refs/heads/openwrt-21.02/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router.dtsi -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router.dtsi
+curl https://github.com/hanwckf/immortalwrt-mt798x/raw/fa0b7600f58cd8be42ab52718dfca980388264b9/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855-stock.dts -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855-stock.dts
+curl https://github.com/hanwckf/immortalwrt-mt798x/raw/fa0b7600f58cd8be42ab52718dfca980388264b9/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855.dts -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855.dts
+curl https://github.com/hanwckf/immortalwrt-mt798x/raw/fa0b7600f58cd8be42ab52718dfca980388264b9/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router.dtsi -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router.dtsi
 
 
-$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/hanwckf/immortalwrt-mt798x/tree/openwrt-21.02/target/linux/mediatek/files-5.4/drivers/net/dsa/airoha/an8855 $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/drivers/net/dsa/airoha/an8855
-$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/hanwckf/immortalwrt-mt798x/tree/openwrt-21.02/target/linux/mediatek/files-5.4/drivers/net/phy/airoha/an8855 $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/drivers/net/phy/airoha/an8855
-$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/hanwckf/immortalwrt-mt798x/tree/openwrt-21.02/target/linux/mediatek/files-5.4/net/dsa $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/net/dsa
+$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/hanwckf/immortalwrt-mt798x/tree/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/files-5.4/drivers/net/dsa/airoha/an8855 $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/drivers/net/dsa/airoha/an8855
+$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/hanwckf/immortalwrt-mt798x/tree/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/files-5.4/drivers/net/phy/airoha/an8855 $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/drivers/net/phy/airoha/an8855
+$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/hanwckf/immortalwrt-mt798x/tree/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/files-5.4/net/dsa $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/net/dsa
 
-curl https://github.com/hanwckf/immortalwrt-mt798x/raw/refs/heads/openwrt-21.02/target/linux/mediatek/patches-5.4/999-2739-drivers_net_dsa_add_an8855.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-drivers_net_dsa_add_an8855.patch
-curl https://github.com/hanwckf/immortalwrt-mt798x/raw/refs/heads/openwrt-21.02/target/linux/mediatek/patches-5.4/999-2739-drivers_net_phy_add_an8855_gsw.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-drivers_net_phy_add_an8855_gsw.patch
-curl https://github.com/hanwckf/immortalwrt-mt798x/raw/refs/heads/openwrt-21.02/target/linux/mediatek/patches-5.4/999-2739-net_dsa_add_tag_arht.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-net_dsa_add_tag_arht.patch
+curl https://github.com/hanwckf/immortalwrt-mt798x/raw/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/patches-5.4/999-2739-drivers_net_dsa_add_an8855.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-drivers_net_dsa_add_an8855.patch
+curl https://github.com/hanwckf/immortalwrt-mt798x/raw/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/patches-5.4/999-2739-drivers_net_phy_add_an8855_gsw.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-drivers_net_phy_add_an8855_gsw.patch
+curl https://github.com/hanwckf/immortalwrt-mt798x/raw/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/patches-5.4/999-2739-net_dsa_add_tag_arht.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-net_dsa_add_tag_arht.patch
 
 echo "CONFIG_AN8855_GSW=y" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
 echo "# CONFIG_NET_DSA_AN8855 is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
@@ -100,7 +100,7 @@ echo "CONFIG_AN8855_GSW=y" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986
 echo "# CONFIG_NET_DSA_AN8855 is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986/config-5.4
 echo "# CONFIG_NET_DSA_TAG_AIROHA is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986/config-5.4
 
-sed -i "s/mtkhnat-\$\(CONFIG_NET_DSA_MT7530\)\t\t\+= hnat_stag\.o/ifeq \(\$\(CONFIG_NET_DSA_AN8855\), y\)\nmtkhnat-y\t\t\+= hnat_stag\.o\nelse\nmtkhnat-\$\(CONFIG_NET_DSA_MT7530\)\t\t\+= hnat_stag\.o\nendif/g" $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/drivers/net/ethernet/mediatek/mtk_hnat/Makefile
+curl https://github.com/hanwckf/immortalwrt-mt798x/raw/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/files-5.4/drivers/net/ethernet/mediatek/mtk_hnat/Makefile -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/drivers/net/ethernet/mediatek/mtk_hnat/Makefile
 
 # modify mt7981.mk
 AWK_BLOCK=$(cat << 'AWK_EOF'
@@ -136,18 +136,57 @@ TARGET_DEVICES += xiaomi_mi-router-ax3000t-an8855
 AWK_EOF
 )
 
+# 使用 gawk 或 awk 进行处理。
+# '/pattern/{...}' 会在匹配到模式后执行操作。
 gawk -i inplace -v insert_text="$AWK_BLOCK" '
   1; # 默认动作：打印当前行
-  /TARGET_DEVICES += xiaomi_mi-router-ax3000t/{
-    print insert_text; # 匹配到目标行后，立即插入文本块
+  /TARGET_DEVICES += xiaomi_mi-router-ax3000t$/{
+    # 找到目标行后，读取下一行（空行）
+    getline; 
+    print; # 打印空行
+    print insert_text; # 在空行之后插入文本块
   }
 ' $GITHUB_WORKSPACE/wrt/target/linux/mediatek/image/mt7981.mk
 
 echo "1111111111"
-sed -i 's/^\s*xiaomi,mi-router-ax3000t\*\s*|\\$/\txiaomi,mi-router-ax3000t|\\\n\txiaomi,mi-router-ax3000t-stock|\\/' $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
+sed -i '/^\txiaomi,mi-router-ax3000t\* |\\$/ {
+    N;N
+    s/\txiaomi,mi-router-ax3000t\* |\\\n\txiaomi,mi-router-wr30u\*)\n\t\tucidef_set_interfaces_lan_wan "lan1 lan2 lan3" wan/\txiaomi,mi-router-ax3000t|\\\n\txiaomi,mi-router-ax3000t-stock|\\\n\txiaomi,mi-router-wr30u\*)\n\t\tucidef_set_interfaces_lan_wan "lan1 lan2 lan3" wan/
+}' $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
 echo "2222222222"
-sed -i 's/^[[:space:]]*\*360,t7\*)/\txiaomi,mi-router-ax3000t-an8855|\\\n\txiaomi,mi-router-ax3000t-an8855-stock)\n\t\tucidef_set_interfaces_lan_wan "eth0.1" "eth0.2"\n\t\tucidef_add_switch "switch0" \\\n\t\t\t"1:lan" "2:lan" "3:lan" "0:wan" "5t@eth0"\n\t\t;;\n\t*360,t7*)/'  $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
+AWK_BLOCK=$(cat << 'AWK_EOF'
+	xiaomi,mi-router-ax3000t-an8855|\
+	xiaomi,mi-router-ax3000t-an8855-stock)
+		ucidef_set_interfaces_lan_wan "eth0.1" "eth0.2"
+		ucidef_add_switch "switch0" \
+			"1:lan" "2:lan" "3:lan" "0:wan" "5t@eth0"
+		;;
+AWK_EOF
+)
+
+# 使用 gawk/awk 脚本进行多行前置插入
+awk -v insert_text="$AWK_BLOCK" '
+  /^\t\*360,t7\*\)$/ {                     # 匹配第一行: 仅匹配 *360,t7*)
+    line1 = $0;                             # 存储第一行内容
+    if (getline) {                          # 读取下一行
+      line2 = $0;                           # 存储第二行内容
+      
+      # 检查第二行是否匹配目标模式
+      if (line2 ~ /^\t\tucidef_set_interfaces_lan_wan "eth0" "eth1"/) {
+        print insert_text;                  # 匹配成功，插入新文本
+        print line1;                        # 打印第一行
+        print line2;                        # 打印第二行
+        next;                               # 跳到下一条记录
+      } else {
+        # 第二行不匹配，回退并正常处理
+        print line1;                        # 打印第一行
+        print line2;                        # 打印第二行
+      }
+    }
+  }
+  1; # 默认动作：打印所有未被处理的行
+'  $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/etc/board.d/02_network
 echo "3333333333"
-sed -i '/^[[:space:]]*xiaomi,mi-router-ax3000t-stock|\\$/a\\txiaomi,mi-router-ax3000t-an8855-stock|\\' $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
+sed -i '/^\txiaomi,mi-router-ax3000t-stock|\\$/a\\txiaomi,mi-router-ax3000t-an8855-stock|\\' $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
 echo "4444444444"
-sed -i '/^[[:space:]]*xiaomi,mi-router-ax3000t|\\$/a\\txiaomi,mi-router-ax3000t-an8855|\\' $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
+sed -i '/^\txiaomi,mi-router-ax3000t|\\$/a\\txiaomi,mi-router-ax3000t-an8855|\\' $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
