@@ -82,7 +82,7 @@ sed -i 's,mirrors.vsean.net/openwrt,mirror.nju.edu.cn/immortalwrt,g' $PKG_PATH/e
 if grep -q "an8855=y" $GITHUB_WORKSPACE/Config/MT7981.txt ; then
     echo "检测到 an8855=y，执行相关命令..."
     
-	cd $GITHUB_WORKSPACE/wrt/ && patch -p1 < ../Patch/xiaomi-ax3000t-an8855.patch
+	cd $GITHUB_WORKSPACE/wrt/ && patch -p1 < $GITHUB_WORKSPACE/Patch/xiaomi-ax3000t-an8855.patch
 	echo "CONFIG_AN8855_GSW=y" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
 	echo "# CONFIG_NET_DSA_AN8855 is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
 	echo "# CONFIG_NET_DSA_TAG_AIROHA is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
