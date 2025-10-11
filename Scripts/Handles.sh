@@ -79,7 +79,7 @@ fi
 sed -i 's,mirrors.vsean.net/openwrt,mirror.nju.edu.cn/immortalwrt,g' $PKG_PATH/emortal/default-settings/files/99-default-settings-chinese && echo "default mirror switched!"
 
 # add an8855 support
-if grep -q "an8855=y" .config; then
+if grep -q "an8855=y" $GITHUB_WORKSPACE/Config/MT7981.txt ; then
     echo "检测到 an8855=y，执行相关命令..."
     
 	cd $GITHUB_WORKSPACE/wrt/ && patch -p1 < ../Patch/xiaomi-ax3000t-an8855.patch
