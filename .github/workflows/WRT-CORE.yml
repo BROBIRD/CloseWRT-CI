@@ -40,6 +40,9 @@ on:
       WRT_TEST:
         required: false
         type: string
+      WRT_SSH:
+        required: false
+        type: string
 
 env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -55,6 +58,7 @@ env:
   WRT_SOURCE: ${{inputs.WRT_SOURCE}}
   WRT_PACKAGE: ${{inputs.WRT_PACKAGE}}
   WRT_TEST: ${{inputs.WRT_TEST}}
+  WRT_SSH: ${{inputs.ssh}}
 
 jobs:
   core:
@@ -185,6 +189,10 @@ jobs:
 
           make download -j$(nproc)
 
+      - name: SSH connection to Actions
+        uses: P3TERX/ssh2actions@v1.0.0
+        if: (env.WRT_SSH == 'true' && env.WRT_SSH != 'false') || contains(github.event.action, 'ssh')
+      
       - name: Compile Firmware
         env:
           DEBIAN_FRONTEND: noninteractive
