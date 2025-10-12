@@ -82,6 +82,7 @@ sed -i 's,mirrors.vsean.net/openwrt,mirror.nju.edu.cn/immortalwrt,g' $PKG_PATH/e
 if grep -q "an8855=y" $GITHUB_WORKSPACE/Config/MT7981.txt ; then
     echo "检测到 an8855=y，执行相关命令..."
     
+	curl https://github.com/hanwckf/immortalwrt-mt798x/raw/351ad5a9a11a45b9cbebff6e5ca1d091f9023591/target/linux/mediatek/patches-5.4/9999-fix-swconfig-more-speeds.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/9999-fix-swconfig-more-speeds.patch
 	cd $GITHUB_WORKSPACE/wrt/ && patch -p1 < $GITHUB_WORKSPACE/Patch/xiaomi-ax3000t-an8855.patch
 	echo "CONFIG_AN8855_GSW=y" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
 	echo "# CONFIG_NET_DSA_AN8855 is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
