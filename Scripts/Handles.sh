@@ -82,7 +82,8 @@ sed -i 's,mirrors.vsean.net/openwrt,mirror.nju.edu.cn/immortalwrt,g' $PKG_PATH/e
 if grep -q "an8855=y" $GITHUB_WORKSPACE/Config/MT7981.txt ; then
     echo "检测到 an8855=y，执行相关命令..."
     
-	curl https://github.com/hanwckf/immortalwrt-mt798x/raw/351ad5a9a11a45b9cbebff6e5ca1d091f9023591/target/linux/mediatek/patches-5.4/9999-fix-swconfig-more-speeds.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/9999-fix-swconfig-more-speeds.patch
+	curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/7aeef4597c8aeead02a3e4846c24b9113c99fed2/package/network/config/swconfig/patches/002-fix-more-speeds-support.patch -o $GITHUB_WORKSPACE/wrt/package/network/config/swconfig/patches/002-fix-more-speeds-support.patch
+	curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/351ad5a9a11a45b9cbebff6e5ca1d091f9023591/target/linux/mediatek/patches-5.4/9999-fix-swconfig-more-speeds.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/9999-fix-swconfig-more-speeds.patch
 	cd $GITHUB_WORKSPACE/wrt/ && patch -p1 < $GITHUB_WORKSPACE/Patch/xiaomi-ax3000t-an8855.patch
 	echo "CONFIG_AN8855_GSW=y" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
 	echo "# CONFIG_NET_DSA_AN8855 is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
@@ -104,18 +105,18 @@ else
 fi
 
 
-# curl https://github.com/hanwckf/immortalwrt-mt798x/raw/fa0b7600f58cd8be42ab52718dfca980388264b9/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855-stock.dts -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855-stock.dts
-# curl https://github.com/hanwckf/immortalwrt-mt798x/raw/fa0b7600f58cd8be42ab52718dfca980388264b9/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855.dts -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855.dts
-# curl https://github.com/hanwckf/immortalwrt-mt798x/raw/fa0b7600f58cd8be42ab52718dfca980388264b9/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router.dtsi -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router.dtsi
+# curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/fa0b7600f58cd8be42ab52718dfca980388264b9/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855-stock.dts -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855-stock.dts
+# curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/fa0b7600f58cd8be42ab52718dfca980388264b9/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855.dts -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855.dts
+# curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/fa0b7600f58cd8be42ab52718dfca980388264b9/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router.dtsi -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router.dtsi
 
 
 # $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/hanwckf/immortalwrt-mt798x/tree/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/files-5.4/drivers/net/dsa/airoha/an8855 $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/drivers/net/dsa/airoha/an8855
 # $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/hanwckf/immortalwrt-mt798x/tree/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/files-5.4/drivers/net/phy/airoha/an8855 $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/drivers/net/phy/airoha/an8855
 # $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/hanwckf/immortalwrt-mt798x/tree/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/files-5.4/net/dsa $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/net/dsa
 
-# curl https://github.com/hanwckf/immortalwrt-mt798x/raw/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/patches-5.4/999-2739-drivers_net_dsa_add_an8855.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-drivers_net_dsa_add_an8855.patch
-# curl https://github.com/hanwckf/immortalwrt-mt798x/raw/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/patches-5.4/999-2739-drivers_net_phy_add_an8855_gsw.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-drivers_net_phy_add_an8855_gsw.patch
-# curl https://github.com/hanwckf/immortalwrt-mt798x/raw/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/patches-5.4/999-2739-net_dsa_add_tag_arht.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-net_dsa_add_tag_arht.patch
+# curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/patches-5.4/999-2739-drivers_net_dsa_add_an8855.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-drivers_net_dsa_add_an8855.patch
+# curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/patches-5.4/999-2739-drivers_net_phy_add_an8855_gsw.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-drivers_net_phy_add_an8855_gsw.patch
+# curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/patches-5.4/999-2739-net_dsa_add_tag_arht.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/999-2739-net_dsa_add_tag_arht.patch
 
 # echo "CONFIG_AN8855_GSW=y" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
 # echo "# CONFIG_NET_DSA_AN8855 is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
@@ -124,7 +125,7 @@ fi
 # echo "# CONFIG_NET_DSA_AN8855 is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986/config-5.4
 # echo "# CONFIG_NET_DSA_TAG_AIROHA is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986/config-5.4
 
-# curl https://github.com/hanwckf/immortalwrt-mt798x/raw/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/files-5.4/drivers/net/ethernet/mediatek/mtk_hnat/Makefile -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/drivers/net/ethernet/mediatek/mtk_hnat/Makefile
+# curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/9bce0f9947c99508f6a71eed698eba523e485b20/target/linux/mediatek/files-5.4/drivers/net/ethernet/mediatek/mtk_hnat/Makefile -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/drivers/net/ethernet/mediatek/mtk_hnat/Makefile
 
 # # modify mt7981.mk
 # AWK_BLOCK=$(cat << 'AWK_EOF'
