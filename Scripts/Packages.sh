@@ -79,6 +79,7 @@ UPDATE_PACKAGE "passwall" "xiaorouji/openwrt-passwall" "main" "pkg"
 rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
 git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall-packages package/passwall-packages
 
+# git clone --depth=1 --single-branch https://github.com/stevenjoezhang/luci-app-adguardhome package/luci-app-adguardhome
 
 # 更新 golang 1.25 版本
 rm -rf feeds/packages/lang/golang
