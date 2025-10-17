@@ -79,30 +79,30 @@ fi
 sed -i 's,mirrors.vsean.net/openwrt,mirror.nju.edu.cn/immortalwrt,g' $PKG_PATH/emortal/default-settings/files/99-default-settings-chinese && echo "default mirror switched!"
 
 # add an8855 support
-if grep -q "an8855=y" $GITHUB_WORKSPACE/Config/MT7981.txt ; then
-    echo "检测到 an8855=y，执行相关命令..."
+# if grep -q "an8855=y" $GITHUB_WORKSPACE/Config/MT7981.txt ; then
+#     echo "检测到 an8855=y，执行相关命令..."
     
-	curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/7aeef4597c8aeead02a3e4846c24b9113c99fed2/package/network/config/swconfig/patches/002-fix-more-speeds-support.patch -o $GITHUB_WORKSPACE/wrt/package/network/config/swconfig/patches/002-fix-more-speeds-support.patch
-	curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/351ad5a9a11a45b9cbebff6e5ca1d091f9023591/target/linux/mediatek/patches-5.4/9999-fix-swconfig-more-speeds.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/9999-fix-swconfig-more-speeds.patch
-	cd $GITHUB_WORKSPACE/wrt/ && patch -p1 < $GITHUB_WORKSPACE/Patch/xiaomi-ax3000t-an8855.patch
-	echo "CONFIG_AN8855_GSW=y" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
-	echo "# CONFIG_NET_DSA_AN8855 is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
-	echo "# CONFIG_NET_DSA_TAG_AIROHA is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
-	echo "CONFIG_AN8855_GSW=y" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986/config-5.4
-	echo "# CONFIG_NET_DSA_AN8855 is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986/config-5.4
-	echo "# CONFIG_NET_DSA_TAG_AIROHA is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986/config-5.4
-    # 在这里添加需要执行的命令
-    # 例如：
-    # echo "执行命令1"
-    # make module_an8855
-    # sudo insmod an8855.ko
-    # 或者其他需要的操作
+# 	curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/7aeef4597c8aeead02a3e4846c24b9113c99fed2/package/network/config/swconfig/patches/002-fix-more-speeds-support.patch -o $GITHUB_WORKSPACE/wrt/package/network/config/swconfig/patches/002-fix-more-speeds-support.patch
+# 	curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/351ad5a9a11a45b9cbebff6e5ca1d091f9023591/target/linux/mediatek/patches-5.4/9999-fix-swconfig-more-speeds.patch -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/patches-5.4/9999-fix-swconfig-more-speeds.patch
+# 	cd $GITHUB_WORKSPACE/wrt/ && patch -p1 < $GITHUB_WORKSPACE/Patch/xiaomi-ax3000t-an8855.patch
+# 	echo "CONFIG_AN8855_GSW=y" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
+# 	echo "# CONFIG_NET_DSA_AN8855 is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
+# 	echo "# CONFIG_NET_DSA_TAG_AIROHA is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7981/config-5.4
+# 	echo "CONFIG_AN8855_GSW=y" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986/config-5.4
+# 	echo "# CONFIG_NET_DSA_AN8855 is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986/config-5.4
+# 	echo "# CONFIG_NET_DSA_TAG_AIROHA is not set" >> $GITHUB_WORKSPACE/wrt/target/linux/mediatek/mt7986/config-5.4
+#     # 在这里添加需要执行的命令
+#     # 例如：
+#     # echo "执行命令1"
+#     # make module_an8855
+#     # sudo insmod an8855.ko
+#     # 或者其他需要的操作
     
-    # 示例命令
-    echo "an8855 模块已启用"
-else
-    echo "未找到 an8855=y 配置"
-fi
+#     # 示例命令
+#     echo "an8855 模块已启用"
+# else
+#     echo "未找到 an8855=y 配置"
+# fi
 
 
 # curl -fsSL https://github.com/hanwckf/immortalwrt-mt798x/raw/fa0b7600f58cd8be42ab52718dfca980388264b9/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855-stock.dts -o $GITHUB_WORKSPACE/wrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-xiaomi-mi-router-ax3000t-an8855-stock.dts
