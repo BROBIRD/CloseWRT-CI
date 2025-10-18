@@ -85,6 +85,8 @@ git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwal
 rm -rf feeds/packages/lang/golang
 $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/packages/tree/master/lang/golang $GITHUB_WORKSPACE/wrt/feeds/packages/lang/golang
 
+$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/tree/master/package/system/procd $GITHUB_WORKSPACE/wrt/package/system/procd
+
 #更新软件包版本
 UPDATE_VERSION() {
 	local PKG_NAME=$1
