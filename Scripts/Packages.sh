@@ -91,6 +91,8 @@ sed -i "s/-O3/-Os/g" package/libs/openssl/Makefile
 rm -rf feeds/packages/lang/golang
 $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/packages/tree/master/lang/golang $GITHUB_WORKSPACE/wrt/feeds/packages/lang/golang
 
+$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/tree/master/package/system/procd $GITHUB_WORKSPACE/wrt/package/system/procd
+
 # curl - http3/quic
 rm -rf feeds/packages/net/curl
 git clone --single-branch --depth=1 https://github.com/sbwml/feeds_packages_net_curl feeds/packages/net/curl
