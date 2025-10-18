@@ -99,11 +99,11 @@ sed -i "/-openwrt/iOPENSSL_OPTIONS += enable-ktls '-DDEVRANDOM=\"\\\\\"/dev/uran
 sed -i "s/-O3/-Os/g" $GITHUB_WORKSPACE/wrt/package/libs/openssl/Makefile
 
 # curl - http3/quic
-rm -rf feeds/packages/net/curl
+rm -rf $GITHUB_WORKSPACE/wrt/feeds/packages/net/curl
 git clone --single-branch --depth=1 https://github.com/sbwml/feeds_packages_net_curl $GITHUB_WORKSPACE/wrt/feeds/packages/net/curl
 
 # ngtcp2
-rm -rf feeds/packages/libs/ngtcp2
+rm -rf $GITHUB_WORKSPACE/wrt/feeds/packages/libs/ngtcp2
 git clone --single-branch --depth=1 https://github.com/sbwml/package_libs_ngtcp2 $GITHUB_WORKSPACE/wrt/package/libs/ngtcp2
 
 # BBRv3 - linux-6.6
