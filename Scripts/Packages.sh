@@ -85,11 +85,11 @@ git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwal
 rm -rf $GITHUB_WORKSPACE/wrt/feeds/packages/lang/golang
 $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/packages/tree/master/lang/golang $GITHUB_WORKSPACE/wrt/feeds/packages/lang/golang
 
-rm -rf $GITHUB_WORKSPACE/wrt/package/system/procd
-$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/tree/master/package/system/procd $GITHUB_WORKSPACE/wrt/package/system/procd
+# rm -rf $GITHUB_WORKSPACE/wrt/package/system/procd
+# $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/tree/master/package/system/procd $GITHUB_WORKSPACE/wrt/package/system/procd
 
-rm -rf $GITHUB_WORKSPACE/wrt/package/libs/openssl
-$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/tree/master/package/libs/openssl $GITHUB_WORKSPACE/wrt/package/libs/openssl
+# rm -rf $GITHUB_WORKSPACE/wrt/package/libs/openssl
+# $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/tree/master/package/libs/openssl $GITHUB_WORKSPACE/wrt/package/libs/openssl
 
 #更新软件包版本
 UPDATE_VERSION() {
