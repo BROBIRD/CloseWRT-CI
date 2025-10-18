@@ -76,33 +76,38 @@ UPDATE_PACKAGE "passwall" "xiaorouji/openwrt-passwall" "main" "pkg"
 
 #cp -r mysing-box/sing-box feeds/packages/net
 
-rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
-git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall-packages package/passwall-packages
+rm -rf $GITHUB_WORKSPACE/wrt/feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
+git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall-packages $GITHUB_WORKSPACE/wrt/package/passwall-packages
 
-# git clone --depth=1 --single-branch https://github.com/stevenjoezhang/luci-app-adguardhome package/luci-app-adguardhome
-
-# openssl hwrng
-sed -i "/-openwrt/iOPENSSL_OPTIONS += enable-ktls '-DDEVRANDOM=\"\\\\\"/dev/urandom\\\\\"\"\'\n" package/libs/openssl/Makefile
-# openssl -Os
-sed -i "s/-O3/-Os/g" package/libs/openssl/Makefile
-
+git clone --depth=1 --single-branch https://github.com/stevenjoezhang/luci-app-adguardhome $GITHUB_WORKSPACE/wrt/package/luci-app-adguardhome
 
 # 更新 golang 1.25 版本
-rm -rf feeds/packages/lang/golang
+rm -rf $GITHUB_WORKSPACE/wrt/feeds/packages/lang/golang
 $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/packages/tree/master/lang/golang $GITHUB_WORKSPACE/wrt/feeds/packages/lang/golang
 
 $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/tree/master/package/system/procd $GITHUB_WORKSPACE/wrt/package/system/procd
 
+# rm -rf $GITHUB_WORKSPACE/wrt/package/system/procd
+# $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/tree/master/package/system/procd $GITHUB_WORKSPACE/wrt/package/system/procd
+
+rm -rf $GITHUB_WORKSPACE/wrt/package/libs/openssl
+$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/tree/master/package/libs/openssl $GITHUB_WORKSPACE/wrt/package/libs/openssl
+
+# openssl hwrng
+sed -i "/-openwrt/iOPENSSL_OPTIONS += enable-ktls '-DDEVRANDOM=\"\\\\\"/dev/urandom\\\\\"\"\'\n" $GITHUB_WORKSPACE/wrt/package/libs/openssl/Makefile
+# openssl -Os
+sed -i "s/-O3/-Os/g" $GITHUB_WORKSPACE/wrt/package/libs/openssl/Makefile
+
 # curl - http3/quic
 rm -rf feeds/packages/net/curl
-git clone --single-branch --depth=1 https://github.com/sbwml/feeds_packages_net_curl feeds/packages/net/curl
+git clone --single-branch --depth=1 https://github.com/sbwml/feeds_packages_net_curl $GITHUB_WORKSPACE/wrt/feeds/packages/net/curl
 
 # ngtcp2
 rm -rf feeds/packages/libs/ngtcp2
-git clone --single-branch --depth=1 https://github.com/sbwml/package_libs_ngtcp2 package/libs/ngtcp2
+git clone --single-branch --depth=1 https://github.com/sbwml/package_libs_ngtcp2 $GITHUB_WORKSPACE/wrt/package/libs/ngtcp2
 
 # BBRv3 - linux-6.6
-pushd target/linux/generic/backport-6.6
+pushd $GITHUB_WORKSPACE/wrt/target/linux/generic/backport-6.6
 	curl -Os https://raw.githubusercontent.com/sbwml/r4s_build_script/5b5d6a5b7fe9a20ac6d52304e914be76c4bb1528/openwrt/patch/kernel-6.6/bbr3/010-bbr3-0001-net-tcp_bbr-broaden-app-limited-rate-sample-detectio.patch
 	curl -Os https://raw.githubusercontent.com/sbwml/r4s_build_script/5b5d6a5b7fe9a20ac6d52304e914be76c4bb1528/openwrt/patch/kernel-6.6/bbr3/010-bbr3-0002-net-tcp_bbr-v2-shrink-delivered_mstamp-first_tx_msta.patch
 	curl -Os https://raw.githubusercontent.com/sbwml/r4s_build_script/5b5d6a5b7fe9a20ac6d52304e914be76c4bb1528/openwrt/patch/kernel-6.6/bbr3/010-bbr3-0003-net-tcp_bbr-v2-snapshot-packets-in-flight-at-transmi.patch
