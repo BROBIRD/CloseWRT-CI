@@ -96,6 +96,9 @@ sed -i "/-openwrt/iOPENSSL_OPTIONS += enable-ktls '-DDEVRANDOM=\"\\\\\"/dev/uran
 # openssl -Os
 sed -i "s/-O3/-Os/g" $GITHUB_WORKSPACE/wrt/package/libs/openssl/Makefile
 
+# fix ebtables PKG_HASH
+sed -i "s/1ee560498e1a047b329eab3dad8425ae51e7f0527e4495efb99481ca11206b37/3039d73b167c41025b1b401b647743b9c6d786613c693eef34de325b30de6d47/g" $GITHUB_WORKSPACE/wrt/package/network/utils/ebtables/Makefile
+
 # curl - http3/quic
 rm -rf $GITHUB_WORKSPACE/wrt/feeds/packages/net/curl
 git clone --single-branch --depth=1 https://github.com/sbwml/feeds_packages_net_curl $GITHUB_WORKSPACE/wrt/feeds/packages/net/curl
