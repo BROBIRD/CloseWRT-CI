@@ -54,7 +54,7 @@ UPDATE_PACKAGE "argon" "jerrykuku/luci-theme-argon" "master"
 #UPDATE_PACKAGE "homeproxy" "kiddin9/kwrt-packages" "main" "" "luci-app-homeproxy"
 # UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
 # UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
-UPDATE_PACKAGE "passwall" "xiaorouji/openwrt-passwall" "main" "pkg"
+UPDATE_PACKAGE "passwall" "Openwrt-Passwall/openwrt-passwall" "main" "pkg"
 # UPDATE_PACKAGE "passwall-packages" "xiaorouji/openwrt-passwall-packages" "main" "" "xray-core v2ray-geodata sing-box chinadns-ng dns2socks hysteria ipt2socks microsocks naiveproxy shadowsocks-libev shadowsocks-rust shadowsocksr-libev simple-obfs tcping trojan-plus tuic-client v2ray-plugin xray-plugin geoview shadow-tls"
 
 # UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
