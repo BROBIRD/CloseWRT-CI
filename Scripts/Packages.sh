@@ -74,6 +74,7 @@ UPDATE_PACKAGE "easytier" "EasyTier/luci-app-easytier" "main"
 ##UPDATE_PACKAGE "mysing-box" "sos801107/packages" "main" "" "sing-box"
 
 
+
 #cp -r mysing-box/sing-box feeds/packages/net
 
 rm -rf $GITHUB_WORKSPACE/wrt/feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
@@ -81,7 +82,7 @@ git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwal
 
 git clone --depth=1 --single-branch https://github.com/stevenjoezhang/luci-app-adguardhome $GITHUB_WORKSPACE/wrt/package/luci-app-adguardhome
 
-# 更新 golang 1.25 版本
+# 更新 golang 版本
 rm -rf $GITHUB_WORKSPACE/wrt/feeds/packages/lang/golang
 $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/packages/tree/master/lang/golang $GITHUB_WORKSPACE/wrt/feeds/packages/lang/golang
 
@@ -90,6 +91,10 @@ $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/
 
 rm -rf $GITHUB_WORKSPACE/wrt/package/libs/openssl
 $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/tree/master/package/libs/openssl $GITHUB_WORKSPACE/wrt/package/libs/openssl
+
+# 更新 rust 版本
+rm -rf $GITHUB_WORKSPACE/wrt/feeds/packages/lang/rust
+$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/packages/tree/master/lang/rust $GITHUB_WORKSPACE/wrt/feeds/packages/lang/rust
 
 # openssl hwrng
 sed -i "/-openwrt/iOPENSSL_OPTIONS += enable-ktls '-DDEVRANDOM=\"\\\\\"/dev/urandom\\\\\"\"\'\n" $GITHUB_WORKSPACE/wrt/package/libs/openssl/Makefile
