@@ -96,6 +96,14 @@ $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/
 rm -rf $GITHUB_WORKSPACE/wrt/feeds/packages/lang/rust
 $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/packages/tree/master/lang/rust $GITHUB_WORKSPACE/wrt/feeds/packages/lang/rust
 
+rm -rf $GITHUB_WORKSPACE/wrt/feeds/packages/net/zerotier
+$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/packages/tree/master/net/zerotier $GITHUB_WORKSPACE/wrt/feeds/packages/net/zerotier
+
+rm -rf $GITHUB_WORKSPACE/wrt/feeds/luci/applications/luci-app-zerotier
+$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/luci/tree/master/applications/luci-app-zerotier $GITHUB_WORKSPACE/wrt/feeds/luci/applications/luci-app-zerotier
+
+
+
 # openssl hwrng
 sed -i "/-openwrt/iOPENSSL_OPTIONS += enable-ktls '-DDEVRANDOM=\"\\\\\"/dev/urandom\\\\\"\"\'\n" $GITHUB_WORKSPACE/wrt/package/libs/openssl/Makefile
 # openssl -Os
