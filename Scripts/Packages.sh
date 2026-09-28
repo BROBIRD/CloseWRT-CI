@@ -89,6 +89,10 @@ $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/packages/tre
 rm -rf $GITHUB_WORKSPACE/wrt/package/system/procd
 $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/tree/master/package/system/procd $GITHUB_WORKSPACE/wrt/package/system/procd
 
+rm -rf $GITHUB_WORKSPACE/wrt/package/libs/libubox
+$GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/tree/master/package/libs/libubox $GITHUB_WORKSPACE/wrt/package/libs/libubox
+
+
 rm -rf $GITHUB_WORKSPACE/wrt/package/libs/openssl
 $GITHUB_WORKSPACE/Scripts/gh-down.sh https://github.com/immortalwrt/immortalwrt/tree/master/package/libs/openssl $GITHUB_WORKSPACE/wrt/package/libs/openssl
 
