@@ -146,6 +146,9 @@ pushd $GITHUB_WORKSPACE/wrt/target/linux/generic/backport-6.6
 	curl -Os https://raw.githubusercontent.com/sbwml/r4s_build_script/5b5d6a5b7fe9a20ac6d52304e914be76c4bb1528/openwrt/patch/kernel-6.6/bbr3/010-bbr3-0018-tcp-export-TCPI_OPT_ECN_LOW-in-tcp_info-tcpi_options.patch
 popd
 
+sed -i 's|https\?://www\.remlab\.net/files/ndisc6|https://www.remlab.net/files/ndisc6/archive|g' $GITHUB_WORKSPACE/wrt/package/mtk/applications/ndisc/Makefile
+
+
 #更新软件包版本
 UPDATE_VERSION() {
 	local PKG_NAME=$1
